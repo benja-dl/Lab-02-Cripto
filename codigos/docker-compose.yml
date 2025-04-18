@@ -1,0 +1,22 @@
+version: '3'
+services:
+  dvwa:
+    image: digininja/dvwa
+    ports:
+      - "4280:80"   # Se puede cambiar a otro puerto de ser necesario.
+    depends_on:
+      - db
+    environment:
+      - DB_SERVER=db
+      - DEFAULT_SECURITY_LEVEL=low  # Opcional: deja el nivel de seguridad bajo para prueba>
+  db:
+    image: mariadb:10.5  # O bien mysql:5.7, según las recomendaciones.
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dvwa
+      MYSQL_USER: dvwa
+      MYSQL_PASSWORD: p@ssw0rd
+    volumes:
+      - db_data:/var/lib/mysql
+volumes:
+  db_data:
